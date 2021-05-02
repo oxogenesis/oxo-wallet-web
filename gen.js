@@ -120,4 +120,79 @@ function msgOfferCancel(pk, sk, sequence, offer_sequence) {
   return msgSigned(json, pk, sk)
 }
 
+function msgInquireAccount(pk, sk, address) {
+  let json = {
+    "Inquire": 'Account',
+    "Address": address,
+    "Timestamp": Date.now()
+  }
+  return msgSigned(json, pk, sk)
+}
+
+function msgInquireAccountRoot(pk, sk, address) {
+  let json = {
+    "Inquire": 'AccountRoot',
+    "Address": address,
+    "Timestamp": Date.now()
+  }
+  return msgSigned(json, pk, sk)
+}
+
+function msgInquireIssuerSubject(pk, sk, issuer, subject) {
+  let json = {
+    "Inquire": 'IssuerSubject',
+    "Issuer": issuer,
+    "Subject": subject,
+    "Timestamp": Date.now()
+  }
+  return msgSigned(json, pk, sk)
+}
+
+function msgInquireHolder(pk, sk, address, issuer, subject) {
+  let json = {
+    "Inquire": 'Holder',
+    "Address": address,
+    "Issuer": issuer,
+    "Subject": subject,
+    "Timestamp": Date.now()
+  }
+  return msgSigned(json, pk, sk)
+}
+
+function msgInquireOffer(pk, sk, address, sequence) {
+  let json = {
+    "Inquire": 'Offer',
+    "Address": address,
+    "Sequence": sequence,
+    "Timestamp": Date.now()
+  }
+  return msgSigned(json, pk, sk)
+}
+
+function msgInquireOfferBook(pk, sk, pay_issuer, pay_subject, get_issuer, get_subject) {
+  let json = {
+    "Inquire": 'OfferBook',
+    "PayIssuer": pay_issuer,
+    "PaySubject": pay_subject,
+    "GetIssuer": get_issuer,
+    "GetSubject": get_subject,
+    "Timestamp": Date.now()
+  }
+  return msgSigned(json, pk, sk)
+}
+
+function msgVerify(pk, sk, id, name, phone, code, ref) {
+  let json = {
+    "Action": 'Verify',
+    "ID": id,
+    "Name": name,
+    "Phone": phone,
+    "Code": code,
+    "Ref": ref,
+    "Timestamp": Date.now()
+  }
+  return msgSigned(json, pk, sk)
+}
+
 console.log(msgDeclare(PublicKey, PrivateKey))
+//console.log(msg...)
